@@ -15,12 +15,11 @@ void mousePressed()
 }
 class Die //models one single dice cube
 {
-	int x = 50;
-  int y = 50;
-	
+	int myX, myY;
 	Die(int x, int y) //constructor
 	{
-		
+		myX = x;
+    myY = y;
 	}
 	void roll()
 	{
@@ -29,6 +28,10 @@ class Die //models one single dice cube
 	void show()
 	{
 		fill(255);
-		rect(x, y, 50, 50);
+		rect(myX, myY, 50, 50);
+    if((int)(Math.random()+1) == 1){
+      fill(0);
+      ellipse(myX+25, myY+25, 10, 10);
+    }
 	}
 }
