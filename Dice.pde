@@ -1,13 +1,23 @@
 void setup()
 {
 	noLoop();
-  	size(300,300);
+  	size(300,350);
+  	textSize(20);
+  	textAlign(CENTER);
 }
 void draw()
 {
-	background(127);
-	Die dice1 = new Die(100,100);
-	dice1.show();
+	background(255);
+	int sum = 0;
+	for(int j = 0; j < 300; j+= 50){
+		for(int k = 0; k < 300; k+=50){
+				Die die1 = new Die(j,k);
+				die1.show();
+				sum += die1.value;
+
+		}
+	}
+	text("Sum: " + sum , 150, 325);	
 }
 void mousePressed()
 {
@@ -15,12 +25,13 @@ void mousePressed()
 }
 class Die //models one single dice cube
 {
-	int myX, myY;
+	int myX, myY, value;
 
 	Die(int x, int y) //constructor
 	{
 		myX = x;
     	myY = y;
+    	value = (int)(Math.random()*6 + 1);
 	}
 	void roll()
 	{
@@ -28,33 +39,26 @@ class Die //models one single dice cube
 	}
 	void show()
 	{
-		fill(255);
+		fill((int)(Math.random()*130+130), (int)(Math.random()*130+130), (int)(Math.random()*130+130));
 		rect(myX, myY, 50, 50);
 
-		int sum = 0;
 		fill(0);
-    	if((int)(Math.random()*6 + 1) == 1){
+    	if(value == 1){
       		draw1();
-      		sum+=1;
-    	}else if((int)(Math.random()*6 + 1) == 2){
+    	}else if(value == 2){
     		draw2();
-    		sum+=2;
-    	}else if((int)(Math.random()*6 + 1) == 3){
+    	}else if(value == 3){
     		draw1();
     		draw2();
-    		sum+=3;
-    	}else if((int)(Math.random()*6 + 1) == 4){
+    	}else if(value == 4){
     		draw4();
-    		sum+=4;
-    	}else if((int)(Math.random()*6 + 1) == 5){
+    	}else if(value == 5){
     		draw4();
     		draw1();
-    		sum+=5;
-    	}else if((int)(Math.random()*6 + 1) == 6){
+    	}else if(value == 6){
     		draw4();
     		ellipse(myX+12, myY+25, 10, 10);
     		ellipse(myX+37, myY+25, 10, 10);
-    		sum+=6;
     	}
 	}
 	void draw1(){
