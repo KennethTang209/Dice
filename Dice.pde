@@ -1,7 +1,7 @@
 void setup()
 {
 	noLoop();
-  	size(300,350);
+  	size(700,750);
   	textSize(20);
   	textAlign(CENTER);
 }
@@ -9,15 +9,15 @@ void draw()
 {
 	background(255);
 	int sum = 0;
-	for(int j = 0; j < 300; j+= 50){
-		for(int k = 0; k < 300; k+=50){
+	for(int j = 0; j < 700; j+= 50){
+		for(int k = 0; k < 700; k+=50){
 				Die die1 = new Die(j,k);
 				die1.show();
 				sum += die1.value;
 
 		}
 	}
-	text("Sum: " + sum , 150, 325);	
+	text("Sum: " + sum , 350, 725);	
 }
 void mousePressed()
 {
